@@ -8,6 +8,7 @@ Basic desktop automation functions for v lang.
 
 - Screen related functions such as `screen_size()`, `get_pixel_color()`...
 - Keyboard simulation and hooks
+- Add more mouse easing functions, currently has only linear
 
 ## Example
 
