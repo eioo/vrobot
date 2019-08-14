@@ -1,6 +1,6 @@
 # vrobot
 
-⚠ _Work in progress. Windows only supported._
+⚠ _Work in progress. Windows is supported only._
 
 Basic desktop automation functions for v lang.
 
@@ -30,38 +30,38 @@ vrobot.drag(150, 150)
 
 ## Functions
 
-### `get_mouse_pos() { x, y int }`
+#### `get_mouse_pos() { x, y int }`
 
 Returns struct with current mouse position.
 
-### `click(button string)`
+#### `click(button string)`
 
 Clicks with mouse.
 
-### `double_click(button string)`
+#### `double_click(button string)`
 
 Double clicks.
 
-### `drag(x, y int)`
+#### `drag(x, y int)`
 
 Drags mouse (left) to specified position.
 
-### `drag_rel(offset_x, offset_y int)`
+#### `drag_rel(offset_x, offset_y int)`
 
 Drags mouse (left) relative to current position.
 
-### `move_mouse(x, y int)`
+#### `move_mouse(x, y int)`
 
 Moves mouse to x, y.
 
-### `move_mouse_rel(offset_x, offset_y, duration_ms int)`
+#### `move_mouse_rel(offset_x, offset_y, duration_ms int)`
 
 Moves mouse relative to current position.
 
-### `move_mouse_smooth(dest_x, dest_y, duration_ms int)`
+#### `move_mouse_smooth(dest_x, dest_y, duration_ms int)`
 
 Moves mouse smoothly to dest_x, dest_y in duration_ms.
 
-### `move_mouse_smooth_rel(offset_x, offset_y, duration_ms int)`
+#### `move_mouse_smooth_rel(offset_x, offset_y, duration_ms int)`
 
 Moves mouse smoothly, relative to current position in duration_ms.

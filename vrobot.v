@@ -1,12 +1,11 @@
-module main
+module vrobot
  
-import math
 import time
 
 #include "windows.h"
 
 const (
-  MOUSE_STEPS = 500
+  MouseSteps = 500
 )
 
 struct Point {
@@ -66,28 +65,23 @@ pub fn move_mouse(x, y int) {
   C.SetCursorPos(x, y)
 }
 
-pub fn move_mouse_rel(offset_x, offset_y, duration_ms int) {
+pub fn move_mouse_rel(offset_x, offset_y int) {
   start_pos := get_mouse_pos()
   dest_x := start_pos.x + offset_x
   dest_y := start_pos.y + offset_y
-
-  if duration_ms == 0 {
-    move_mouse(dest_x, dest_y)
-  } else {
-    move_mouse_smooth(dest_x, dest_y, duration_ms)
-  }
+  move_mouse(dest_x, dest_y)
 }
 
 pub fn move_mouse_smooth(dest_x, dest_y, duration_ms int) {
   start_pos := get_mouse_pos()
 
-  dx := (f32(dest_x) - start_pos.x) / MOUSE_STEPS
-  dy := (f32(dest_y) - start_pos.y) / MOUSE_STEPS
-  dt := int(f32(duration_ms) / f32(MOUSE_STEPS))
+  dx := (f32(dest_x) - start_pos.x) / MouseSteps
+  dy := (f32(dest_y) - start_pos.y) / MouseSteps
+  dt := int(f32(duration_ms) / f32(MouseSteps))
 
   mut i := 0
   
-  for i < MOUSE_STEPS {
+  for i < MouseSteps {
     x := int(f32(start_pos.x) + dx * i)
     y := int(f32(start_pos.y) + dy * i)
 
@@ -95,6 +89,13 @@ pub fn move_mouse_smooth(dest_x, dest_y, duration_ms int) {
     time.sleep_ms(dt)
     i++
   }
+}
+
+pub fn move_mouse_smooth_rel(offset_x, offset_y, duration_ms int) {
+  start_pos := get_mouse_pos()
+  dest_x := start_pos.x + offset_x
+  dest_y := start_pos.y + offset_y
+  move_mouse_smooth(dest_x, dest_y, duration_ms)
 }
 
 pub fn get_mouse_pos() Point {
@@ -106,15 +107,4 @@ pub fn get_mouse_pos() Point {
   }
 
   return p
-}
-
-fn main() {
-  $if !windows {
-    panic('You need windows machine')
-  }
-
-  // Test code
-  p := get_mouse_pos()
-  println('Mouse position: $p.x, $p.y')
-  drag_rel(50, 234)
 }
