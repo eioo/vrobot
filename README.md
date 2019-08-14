@@ -15,7 +15,7 @@ Basic desktop automation functions for v lang.
 ```go
 import vrobot
 
-pos := vrobot.get_mouse_position()
+pos := vrobot.get_mouse_pos()
 println('Current mouse position: $pos.x, $pos.y')
 
 // Moves mouse twice returning to starting position

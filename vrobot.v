@@ -9,6 +9,7 @@ const (
 )
 
 struct Point {
+pub:
   x int
   y int
 }
