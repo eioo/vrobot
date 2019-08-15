@@ -90,6 +90,7 @@ pub fn move_mouse_smooth(dest_x, dest_y, duration_ms int, tween string) {
 
     // TODO there must be better way to do this
     match tween {
+      'linear' => factor = n
       'ease_in_quad' => factor = ease_in_quad(n)
       'ease_out_quad' => factor = ease_out_quad(n)
       'ease_in_out_quad' => factor = ease_in_out_quad(n)
