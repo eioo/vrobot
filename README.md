@@ -73,6 +73,8 @@ See list of available tweens below.
 
 ## Available mouse tweens
 
+You can preview tweens here: https://easings.net/
+
 - `ease_in_quad`
 - `ease_out_quad`
 - `ease_in_out_quad`
