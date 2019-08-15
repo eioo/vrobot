@@ -5,10 +5,6 @@ import time
 
 #include "windows.h"
 
-const (
-  MouseSteps = 500
-)
-
 struct Point {
 pub:
   x int
@@ -74,19 +70,19 @@ pub fn move_mouse_rel(offset_x, offset_y int) {
   move_mouse(dest_x, dest_y)
 }
 
-pub fn move_mouse_smooth(dest_x, dest_y, duration_ms int, tween string) {
+pub fn move_mouse_smooth(x, y, duration_ms int, tween string) {
   start_pos := get_mouse_pos()
-  dist_x := f64(dest_x) - start_pos.x
-  dist_y := f64(dest_y) - start_pos.y
-  dt := int(f64(duration_ms) / f64(MouseSteps))
+  dist_x := f64(x) - start_pos.x
+  dist_y := f64(y) - start_pos.y
+  dist := math.sqrt(math.pow(x - start_pos.x, 2) + math.pow(y - start_pos.y, 2))
+  steps := int(math.max(50.0, duration_ms / 5))
+  dt := int(f64(duration_ms) / f64(steps))
   
   mut factor := 0.0
-  mut x := f64(start_pos.x)
-  mut y := f64(start_pos.y)
   mut i := 0
   
-  for i < MouseSteps {
-    n := normalize(i, 0, MouseSteps)
+  for i < steps {
+    n := normalize(i, 0, steps)
 
     // TODO there must be better way to do this
     match tween {
@@ -124,10 +120,10 @@ pub fn move_mouse_smooth(dest_x, dest_y, duration_ms int, tween string) {
       else => panic('Tween not found')
     }
 
-    x = f64(start_pos.x) + factor * dist_x
-    y = f64(start_pos.y) + factor * dist_y
+    current_x := int(f64(start_pos.x) + factor * dist_x)
+    current_y := int(f64(start_pos.y) + factor * dist_y)
 
-    move_mouse(int(x), int(y))
+    move_mouse(current_x, current_y)
     time.sleep_ms(dt)
     i++
   }

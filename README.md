@@ -19,8 +19,8 @@ pos := vrobot.get_mouse_pos()
 println('Current mouse position: $pos.x, $pos.y')
 
 // Moves mouse twice returning to starting position
-vrobot.move_mouse_smooth(pos.x + 100, pos.y + 100, 1000)
-vrobot.move_mouse_smooth_rel(-100, -100, 500)
+vrobot.move_mouse_smooth(pos.x + 100, pos.y + 100, 1000, 'ease_in_out_quad')
+vrobot.move_mouse_smooth_rel(-100, -100, 500, 'linear')
 
 // Drags from 100, 100 to 150, 150 with left click
 vrobot.move_mouse(100, 100)
