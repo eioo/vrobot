@@ -7,7 +7,7 @@ Basic desktop automation functions for v lang.
 ## Plans
 
 - [x] Add more mouse easing functions, currently it only has linear
-- [ ] Screen related functions such as `screen_size()`, ~~`get_pixel_color()`~~...
+- [ ] Screen related functions such as ~~`screen_resolution()`~~, ~~`pixel_color()`~~...
 - [ ] Keyboard simulation and hooks
 - [ ] Linux support, not priority currently
 
@@ -16,6 +16,7 @@ Basic desktop automation functions for v lang.
 ```go
 import vrobot
 
+// Show mouse position
 pos := vrobot.get_mouse_pos()
 println('Current mouse position: $pos.x, $pos.y')
 
@@ -30,6 +31,10 @@ vrobot.drag(150, 150)
 // Print pixel color at (100, 100)
 color := vrobot.get_pixel_color(100, 100)
 println('Pixel color is: ($color.r, $color.g, $color.b)')
+
+// Get screen resolution
+res := vrobot.screen_resolution()
+println('Screen resolution: $res.width, $res.height')
 ```
 
 🖱️ Valid mouse buttons are: `left`, `right`, `middle`
@@ -76,7 +81,11 @@ Moves mouse smoothly, relative to current position in duration_ms.
 
 See list of available tweens below.
 
-#### `get_pixel_color(x, y int) { r, g, b int }`
+#### `screen_resolution() { width, height, int }`
+
+Returns screen resolution in pixels.
+
+#### `pixel_color(x, y int) { r, g, b int }`
 
 Returns pixel color at x, y.
 

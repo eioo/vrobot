@@ -7,6 +7,12 @@ pub:
   b int
 }
 
+struct Size {
+pub:
+  width int
+  height int
+}
+
 struct Point {
 pub:
   x int
