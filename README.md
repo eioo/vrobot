@@ -71,6 +71,10 @@ Moves mouse smoothly, relative to current position in duration_ms.
 
 See list of available tweens below.
 
+#### `get_pixel_color(x, y int) { r, g, b int }`
+
+Returns pixel color at x, y.
+
 ## Available mouse tweens
 
 You can preview tweens here: https://easings.net/

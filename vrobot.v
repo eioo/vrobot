@@ -3,7 +3,15 @@ module vrobot
 import math
 import time
 
+#flag -lgdi32
 #include "windows.h"
+
+struct Color {
+pub:
+  r int
+  g int
+  b int
+}
 
 struct Point {
 pub:
@@ -146,3 +154,43 @@ pub fn get_mouse_pos() Point {
 
   return p
 }
+
+pub fn get_pixel_color(x, y int) Color {
+  hdc := C.GetDC(C.NULL)
+
+  if !hdc {
+    panic('Could not get device context handle')
+  }
+
+  mut pixel := i32(0)
+  pixel = C.GetPixel(hdc, x, y)
+  C.ReleaseDC(C.GetDesktopWindow(), hdc)
+
+  color := Color{
+    r: C.GetRValue(pixel),
+    g: C.GetGValue(pixel),
+    b: C.GetBValue(pixel),
+  }
+
+  return color
+}
+
+/*
+struct C.INPUT
+
+pub fn type_stuff() {
+  // Keyboard
+  input := &C.INPUT{}
+  vkey := C.VK_RETURN
+  input.type = 1 // C.INPUT_KEYBOARD
+  input.ki.wScan = C.MapVirtualKey(vkey, C.MAPVK_VK_TO_VSC)
+  input.ki.time = 0 
+  input.ki.dwExtraInfo = 0
+  input.ki.wVk = vkey
+  input.ki.dwFlags = 0
+  C.SendInput(1, &input, sizeof(C.INPUT))
+
+  input.ki.dwFlags = C.KEYEVENTF_KEYUP
+  C.SendInput(1, &input, sizeof(C.INPUT))
+}
+*/
