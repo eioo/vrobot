@@ -2,7 +2,7 @@
 
 ⚠ _Work in progress. Windows is supported only._
 
-Basic desktop automation functions for v lang.
+Basic desktop automation functions for V lang.
 
 ## Plans
 
@@ -10,9 +10,11 @@ Basic desktop automation functions for v lang.
 - [ ] Screen related functions
   - [x] `screen_size()`
   - [x] `pixel_color()`
-  - [ ] ... Ideas are welcome!
+  - [ ] `locate_on_screen()` For colors and images
 - [ ] Keyboard simulation and hooks
 - [ ] Linux support, not priority currently
+
+All ideas are welcome!
 
 ## Example
 
@@ -21,7 +23,7 @@ import vrobot
 
 // Print mouse position
 pos := vrobot.mouse_pos()
-println('Current mouse position: $pos.x, $pos.y')
+println('Mouse position: $pos.x, $pos.y')
 
 // Print pixel color at (100, 100)
 color := vrobot.pixel_color(100, 100)
@@ -31,8 +33,8 @@ println('Pixel color is: ($color.r, $color.g, $color.b)')
 screen := vrobot.screen_size()
 println('Screen size: $screen.width, $screen.height')
 
-// Moves mouse twice and returning to starting position
-vrobot.move_mouse_smooth(pos.x + 100, pos.y + 100, 1000, 'ease_in_out_quad')
+// Moves mouse twice and returns to starting position
+vrobot.move_mouse(pos.x + 100, pos.y + 100)
 vrobot.move_mouse_smooth_rel(-100, -100, 500, 'linear')
 
 // Drags from (100, 100) to (150, 150) with left click
@@ -43,6 +45,8 @@ vrobot.drag(150, 150)
 🖱️ Valid mouse buttons are: `left`, `right`, `middle`
 
 ## Functions
+
+### Mouse
 
 #### `mouse_pos() { x, y int }`
 
@@ -68,7 +72,7 @@ Drags mouse (left) relative to current position.
 
 Moves mouse to x, y.
 
-#### `move_mouse_rel(offset_x, offset_y, duration_ms int)`
+#### `move_mouse_rel(offset_x, offset_y)`
 
 Moves mouse relative to current position.
 
@@ -84,9 +88,11 @@ Moves mouse smoothly, relative to current position in duration_ms.
 
 See list of available tweens below.
 
-#### `screen_resolution() { width, height, int }`
+### Screen
 
-Returns screen resolution in pixels.
+#### `screen_size() { width, height, int }`
+
+Returns screen size in pixels.
 
 #### `pixel_color(x, y int) { r, g, b int }`
 
@@ -131,3 +137,5 @@ You can preview tweens here: https://easings.net/
 ## Credits
 
 Thanks to the amazing team at [@vlang](https://github.com/vlang) and their Discord channel.
+
+Inspired by [robotgo](https://github.com/go-vgo/robotgo) and [pyautogui](https://github.com/asweigart/pyautogui).
