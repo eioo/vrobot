@@ -42,7 +42,7 @@ pub fn drag(x, y int) {
 }
 
 pub fn drag_rel(offset_x, offset_y int) {
-  start_pos := get_mouse_pos()
+  start_pos := mouse_pos()
   dest_x := start_pos.x + offset_x
   dest_y := start_pos.y + offset_y
 
@@ -56,14 +56,14 @@ pub fn move_mouse(x, y int) {
 }
 
 pub fn move_mouse_rel(offset_x, offset_y int) {
-  start_pos := get_mouse_pos()
+  start_pos := mouse_pos()
   dest_x := start_pos.x + offset_x
   dest_y := start_pos.y + offset_y
   move_mouse(dest_x, dest_y)
 }
 
 pub fn move_mouse_smooth(x, y, duration_ms int, tween string) {
-  start_pos := get_mouse_pos()
+  start_pos := mouse_pos()
   dist_x := f64(x) - start_pos.x
   dist_y := f64(y) - start_pos.y
   dist := math.sqrt(math.pow(x - start_pos.x, 2) + math.pow(y - start_pos.y, 2))
@@ -122,13 +122,13 @@ pub fn move_mouse_smooth(x, y, duration_ms int, tween string) {
 }
 
 pub fn move_mouse_smooth_rel(offset_x, offset_y, duration_ms int, tween string) {
-  start_pos := get_mouse_pos()
+  start_pos := mouse_pos()
   dest_x := start_pos.x + offset_x
   dest_y := start_pos.y + offset_y
   move_mouse_smooth(dest_x, dest_y, duration_ms, tween)
 }
 
-pub fn get_mouse_pos() Point {
+pub fn mouse_pos() Point {
   p := Point{}
   cursor := C.GetCursorPos(&p)
 

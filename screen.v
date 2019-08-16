@@ -20,7 +20,7 @@ pub fn pixel_color(x, y int) Color {
   return color
 }
 
-pub fn screen_resolution() Size {
+pub fn screen_size() Size {
   width := int(C.GetSystemMetrics(C.SM_CXSCREEN))
   height := int(C.GetSystemMetrics(C.SM_CYSCREEN))
 
