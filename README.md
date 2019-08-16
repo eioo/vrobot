@@ -59,7 +59,7 @@ Moves mouse to x, y.
 
 Moves mouse relative to current position.
 
-#### `move_mouse_smooth(dest_x, dest_y, duration_ms int, tween string)`
+#### `move_mouse_smooth(x, y, duration_ms int, tween string)`
 
 Moves mouse smoothly to dest_x, dest_y in duration_ms.
 
@@ -110,3 +110,7 @@ You can preview tweens here: https://easings.net/
 - `ease_in_bounce`
 - `ease_out_bounce`
 - `ease_in_out_bounce`
+
+## Credits
+
+Thanks to the amazing team at [@vlang](https://github.com/vlang) and their Discord channel.
