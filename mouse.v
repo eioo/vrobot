@@ -1,5 +1,8 @@
 module vrobot
 
+import math
+import time
+
 fn send_mouse_event(x int) {
   C.mouse_event(x, 0, 0, 0, 0)
 }

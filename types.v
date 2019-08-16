@@ -1,3 +1,4 @@
+module vrobot
 
 struct Color {
 pub:
