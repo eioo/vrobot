@@ -1,6 +1,6 @@
 # vrobot
 
-⚠ _Work in progress. Windows is supported only._
+⚠ _Work in progress. Only Windows is supported._
 
 Basic desktop automation functions for V lang.
 
