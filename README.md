@@ -2,7 +2,7 @@
 
 ⚠ _Work in progress. Only Windows is supported._
 
-Basic desktop automation functions for V lang.
+Basic desktop automation functions for V lang. PRs welcome :)
 
 ## Plans
 
