@@ -69,8 +69,8 @@ pub fn move_mouse_smooth(x int, y int, duration_ms int, tween string) {
   dist_x := f64(x) - start_pos.x
   dist_y := f64(y) - start_pos.y
   dist := math.sqrt(math.pow(x - start_pos.x, 2) + math.pow(y - start_pos.y, 2))
-  steps := int(math.max(50.0, duration_ms / 5))
-  dt := int(f64(duration_ms) / f64(steps))
+  steps := int(math.max(50.0, duration_ms * 1000 / 5))
+  dt := int(f64(duration_ms * 1000) / f64(steps))
   
   mut factor := 0.0
   mut i := 0
