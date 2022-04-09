@@ -1,9 +1,9 @@
 module vrobot
 
-pub fn pixel_color(x, y int) Color {
+pub fn pixel_color(x int, y int) Color {
   hdc := C.GetDC(C.NULL)
 
-  if !hdc {
+  if hdc == C.NULL {
     panic('Could not get device context handle')
   }
 
@@ -12,9 +12,9 @@ pub fn pixel_color(x, y int) Color {
   C.ReleaseDC(C.GetDesktopWindow(), hdc)
 
   color := Color{
-    r: C.GetRValue(pixel),
-    g: C.GetGValue(pixel),
-    b: C.GetBValue(pixel),
+    r: get_r_value(pixel),
+    g: get_g_value(pixel),
+    b: get_b_value(pixel)
   }
 
   return color

@@ -101,18 +101,18 @@ pub fn ease_in_out_quint(n f64) f64 {
 
 pub fn ease_in_sine(n f64) f64 {
   check_valid_range(n)
-  return -1.0 * math.cos(n * math.Pi / 2.0) + 1.0
+  return -1.0 * math.cos(n * math.pi / 2.0) + 1.0
 }
 
 
 pub fn ease_out_sine(n f64) f64 {
   check_valid_range(n)
-  return math.sin(n * math.Pi / 2)
+  return math.sin(n * math.pi / 2)
 }
 
 pub fn ease_in_out_sine(n f64) f64 {
   check_valid_range(n)
-  return -0.5 * (math.cos(math.Pi * n) - 1)
+  return -0.5 * (math.cos(math.pi * n) - 1)
 }
 
 pub fn ease_in_expo(n f64) f64 {
@@ -195,10 +195,10 @@ pub fn ease_out_elastic(n f64) f64 {
     amplitude = 1
     s = period / 4
   } else {
-    s = period / (2.0 * math.Pi) * math.asin(1.0 / amplitude)
+    s = period / (2.0 * math.pi) * math.asin(1.0 / amplitude)
   }
 
-  return amplitude * math.pow(2.0, (-10.0 * n)) * math.sin((n - s) * (2.0 * math.Pi / period)) + 1.0
+  return amplitude * math.pow(2.0, (-10.0 * n)) * math.sin((n - s) * (2.0 * math.pi / period)) + 1.0
 }
 
 pub fn ease_in_out_elastic(n f64) f64 {
