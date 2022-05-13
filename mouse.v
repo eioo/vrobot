@@ -79,38 +79,38 @@ pub fn move_mouse_smooth(x int, y int, duration_ms int, tween string) {
     n := normalize(i, 0, steps)
 
     // TODO there must be better way to do this
-    match tween {
-      'linear' { factor = n }
-      'ease_in_quad' { factor = ease_in_quad(n) }
-      'ease_out_quad' { factor = ease_out_quad(n) }
-      'ease_in_out_quad' { factor = ease_in_out_quad(n) }
-      'ease_in_cubic' { factor = ease_in_cubic(n) }
-      'ease_out_cubic' { factor = ease_out_cubic(n) }
-      'ease_in_out_cubic' { factor = ease_in_out_cubic(n) }
-      'ease_in_quart' { factor = ease_in_quart(n) }
-      'ease_out_quart' { factor = ease_out_quart(n) }
-      'ease_in_out_quart' { factor = ease_in_out_quart(n) }
-      'ease_in_quint' { factor = ease_in_quint(n) }
-      'ease_out_quint' { factor = ease_out_quint(n) }
-      'ease_in_out_quint' { factor = ease_in_out_quint(n) }
-      'ease_in_sine' { factor = ease_in_sine(n) }
-      'ease_out_sine' { factor = ease_out_sine(n) }
-      'ease_in_out_sine' { factor = ease_in_out_sine(n) }
-      'ease_in_expo' { factor = ease_in_expo(n) }
-      'ease_out_expo' { factor = ease_out_expo(n) }
-      'ease_in_out_expo' { factor = ease_in_out_expo(n) }
-      'ease_in_circ' { factor = ease_in_circ(n) }
-      'ease_out_circ' { factor = ease_out_circ(n) }
-      'ease_in_out_circ' { factor = ease_in_out_circ(n) }
-      'ease_in_elastic' { factor = ease_in_elastic(n) }
-      'ease_out_elastic' { factor = ease_out_elastic(n) }
-      'ease_in_out_elastic' { factor = ease_in_out_elastic(n) }
-      'ease_in_back' { factor = ease_in_back(n) }
-      'ease_out_back' { factor = ease_out_back(n) }
-      'ease_in_out_back' { factor = ease_in_out_back(n) }
-      'ease_in_bounce' { factor = ease_in_bounce(n) }
-      'ease_out_bounce' { factor = ease_out_bounce(n) }
-      'ease_in_out_bounce' { factor = ease_in_out_bounce(n) }
+    factor = match tween {
+      'linear' { n }
+      'ease_in_quad' { ease_in_quad(n) }
+      'ease_out_quad' { ease_out_quad(n) }
+      'ease_in_out_quad' { ease_in_out_quad(n) }
+      'ease_in_cubic' { ease_in_cubic(n) }
+      'ease_out_cubic' { ease_out_cubic(n) }
+      'ease_in_out_cubic' { ease_in_out_cubic(n) }
+      'ease_in_quart' { ease_in_quart(n) }
+      'ease_out_quart' { ease_out_quart(n) }
+      'ease_in_out_quart' { ease_in_out_quart(n) }
+      'ease_in_quint' { ease_in_quint(n) }
+      'ease_out_quint' { ease_out_quint(n) }
+      'ease_in_out_quint' { ease_in_out_quint(n) }
+      'ease_in_sine' { ease_in_sine(n) }
+      'ease_out_sine' { ease_out_sine(n) }
+      'ease_in_out_sine' { ease_in_out_sine(n) }
+      'ease_in_expo' { ease_in_expo(n) }
+      'ease_out_expo' { ease_out_expo(n) }
+      'ease_in_out_expo' { ease_in_out_expo(n) }
+      'ease_in_circ' { ease_in_circ(n) }
+      'ease_out_circ' { ease_out_circ(n) }
+      'ease_in_out_circ' { ease_in_out_circ(n) }
+      'ease_in_elastic' { ease_in_elastic(n) }
+      'ease_out_elastic' { ease_out_elastic(n) }
+      'ease_in_out_elastic' { ease_in_out_elastic(n) }
+      'ease_in_back' { ease_in_back(n) }
+      'ease_out_back' { ease_out_back(n) }
+      'ease_in_out_back' { ease_in_out_back(n) }
+      'ease_in_bounce' { ease_in_bounce(n) }
+      'ease_out_bounce' { ease_out_bounce(n) }
+      'ease_in_out_bounce' { ease_in_out_bounce(n) }
       else { panic('Tween not found') }
     }
 
